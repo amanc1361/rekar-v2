@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  postgres:
+    image: "postgres:14.0"
+     
+    ports:
+      - "5432:5432"
+    restart: always
+   
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    # volumes:
+    #   - ./db-data/postgres/:/var/lib/postgresql/data/
+
+  general-service:
+    image: rekar/rekar
+    container_name: rekar
+    environment:
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DB_PORT=${DB_PORT}
+      - HOST=${HOST}
+      - TIME_ZONE=${TIME_ZONE}
+    build:
+      context: .
+      dockerfile: ./auth/Dockerfile
+    ports: 
+      - "5000:8000"
+    depends_on:
+      - postgres
