@@ -1,4 +1,5 @@
-packge models
+package models
+
 type FinancialPeriod struct {
 	ID          uint   `gorm:"primaryKey"`
 	BusinessID  uint   `gorm:"not null"`

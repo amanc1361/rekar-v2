@@ -1,7 +1,9 @@
-packge models
+package models
+
+import "gorm.io/gorm"
 
 type User struct {
-    gorm.Model
+	gorm.Model
 	Name     string `gorm:"size:50;not null"`
 	Family   string `gorm:"size:50;not null"`
 	Mobile   string `gorm:"size:15;not null"`

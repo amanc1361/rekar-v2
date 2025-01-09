@@ -1,4 +1,5 @@
-packge models
+package models
+
 type UserBusinessAccess struct {
 	ID         uint `gorm:"primaryKey"`
 	UserID     uint `gorm:"not null"`

@@ -1,4 +1,5 @@
-packge models
+package models
+
 type Business struct {
 	ID          uint   `gorm:"primaryKey"`
 	OwnerID     uint   `gorm:"not null"`

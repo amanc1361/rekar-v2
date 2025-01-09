@@ -1,24 +1,14 @@
 package main
 
-import (
-	"fmt"
-	"githubmbarkhanBusTracker/auth/database"
-	"githubmbarkhanBusTracker/auth/routes"
-	"github.com/gin-gonic/gin"
-)
+import "rekar.ir/v2/auth/app"
 
 func main() {
-	fmt.Println("Start Service Auth ............")
-	err := database.Connect()
-	if err != nil {
-		fmt.Println(err)
+	// ایجاد نمونه جدید از App
+	a := app.App{}
 
-	} else {
-		database.AutoMigrate()
-		fmt.Println("Connected")
-		r := gin.Default()
-		routes.Api(r)
-		r.Run(":8000")
-	}
+	// Initialization of app settings
+	a.Initialize()
 
+	// اجرای سرور HTTP
+	a.Run(":8081")
 }
