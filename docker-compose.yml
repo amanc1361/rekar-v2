@@ -16,7 +16,7 @@ services:
 
   app:
     build:
-      context: .
+      context: .÷
       dockerfile: Dockerfile
     environment:
       DB_HOST: ${DB_HOST}
