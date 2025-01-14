@@ -1,0 +1,16 @@
+Feature: User Management
+  Test CRUD operations for the User model.
+
+  Scenario: Create a new user
+    Given the database is ready
+    When I create a user with the following details:
+      | Name   | Family  | Mobile      | Email              | Username | Password | RoleID |
+      | John   | Doe     | 1234567890  | john@example.com   | johndoe  | 12345    | 1      |
+    Then the user should be saved successfully
+
+  Scenario: Retrieve a user
+    Given the database has the following user:
+      | Name   | Family  | Mobile      | Email              | Username | Password | RoleID |
+      | Jane   | Smith   | 0987654321  | jane@example.com   | janesmith| 54321    | 2      |
+    When I retrieve the user with username "janesmith"
+    Then the user's email should be "jane@example.com"
